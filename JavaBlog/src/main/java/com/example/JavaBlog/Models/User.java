@@ -2,6 +2,7 @@ package com.example.JavaBlog.Models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,13 @@ public class User {
 	private long id;
 	private String name;
 	private String lastname;
+	@Column(unique = true, nullable = false)
 	private String username;
+	@Column(nullable = false)
 	private String password;
+	@Column(unique = true, nullable = false)
 	private String Email;
+	
 	@OneToMany
 	private List<Article> articles;
 	
