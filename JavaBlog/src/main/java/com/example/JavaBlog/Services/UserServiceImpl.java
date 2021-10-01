@@ -24,9 +24,9 @@ public class UserServiceImpl implements UserService{
 		try {
 			return repo.save(u);
 		} catch (Exception e) {
-			logger.error("user not entered.");
+			logger.error("user not saved.");
+			return null;
 		}
-		return null;
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService{
 			return repo.findById(id).orElseThrow();
 		} catch (Exception e) {
 			logger.error("user not found.");
+			return null;
 		}
-		return null;
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService{
 			return repo.findAll(Pageable.unpaged());
 		} catch (Exception e) {
 			logger.error("users not found.");
+			return null;
 		}
-		return null;
 	}
 
 	@Override
@@ -54,10 +54,11 @@ public class UserServiceImpl implements UserService{
 		try {
 			User userToDelete = repo.findById(id).orElseThrow();
 			repo.delete(userToDelete);
+			return userToDelete;
 		} catch (Exception e) {
 			logger.error("user not delated.");
+			return null;
 		}
-		return null;
 	}
 	
 }
