@@ -1,4 +1,4 @@
-package com.example.JavaBlog;
+package com.example.JavaBlog.UserTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,8 +11,8 @@ import com.example.JavaBlog.Models.User;
 import com.example.JavaBlog.Services.UserServiceImpl;
 
 @SpringBootTest
-class JavaBlogApplicationTests {
-	
+public class DeleteUsertest {
+
 	@Autowired
 	UserServiceImpl userserviceimpl;
 
@@ -21,27 +21,9 @@ class JavaBlogApplicationTests {
 	}
 	
 	@Test
-	void testaddUser() {
-		User newuser = new User();
-		newuser.setUsername("user1");
-		newuser.setPassword("pass1");
-		newuser.setEmail("user1@gmail.com");
-		assertThat(userserviceimpl.addUser(newuser) != null);
-		assertThat(userserviceimpl.addUser(newuser) == null);
-	}
-	
-	@Test
-	void testgetUser() {
-		Page<User> users = userserviceimpl.getAllUser(null);
-		User user = users.stream().findFirst().get();
-		assertThat(userserviceimpl.getUser(user.getId()) == user);
-	}
-	
-	@Test
 	void testDeleteUser() {
 		Page<User> users = userserviceimpl.getAllUser(null);
 		User usertodelete = users.stream().findFirst().get();
 		assertThat(userserviceimpl.deleteUser(usertodelete.getId()) == usertodelete);
 	}
-
 }
