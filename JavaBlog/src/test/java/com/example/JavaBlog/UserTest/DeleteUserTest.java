@@ -11,7 +11,7 @@ import com.example.JavaBlog.Models.User;
 import com.example.JavaBlog.Services.UserServiceImpl;
 
 @SpringBootTest
-public class DeleteUsertest {
+public class DeleteUserTest {
 
 	@Autowired
 	UserServiceImpl userserviceimpl;
